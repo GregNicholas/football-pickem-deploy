@@ -1,0 +1,42 @@
+/* html {
+    background: green;
+    font-size: 1rem;
+} */
+
+.picked {
+    color: rgb(99, 0, 138);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.pickedCorrect{
+    color: rgb(15, 180, 0);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.pickedWrong {
+    color: rgb(209, 2, 2);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.userName {
+    font-weight: 900;
+    text-decoration: underline;
+    background-color: yellow;
+}
+
+.standingsTable {
+    margin-bottom: 2rem;
+    border: 10px solid;
+}
+
+.submittedTable {
+    margin-top: 1rem;
+    border: 10px solid;
+}
+
+.gameLine {
+    margin-bottom: 0.5rem;
+}
