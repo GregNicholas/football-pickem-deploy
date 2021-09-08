@@ -138,6 +138,13 @@ const Standings = () => {
           const away = thisWeekGames[game]["away"];
           const home = thisWeekGames[game]["home"];
           const userPick = user.picks[game];
+          let pickStatus;
+          if (userPick === finals[game]){
+            numCorrect++;
+            pickStatus = true;
+          } else {
+            pickStatus = false;
+          }
           userPick === away ?
             userPicks.push(
                 <tr key={game}>
@@ -159,13 +166,13 @@ const Standings = () => {
           userPick === away ?
             userPicks.push(
                 <tr key={game}>
-                  <td className={`${userPick === finals[game] ? "pickCorrect" : "pickWrong"}`}>{away}</td>
+                  <td className={`${pickStatus ? "pickCorrect" : "pickWrong"}`}>{away}</td>
                   <td>{home}</td>
                 </tr>)
             : userPicks.push(
               <tr key={game}>
                 <td>{away}</td>
-                <td className={`${userPick === finals[game] ? "pickCorrect" : "pickWrong"}`}>{home}</td>
+                <td className={`${pickStatus ? "pickCorrect" : "pickWrong"}`}>{home}</td>
               </tr>);     
         return null;
         })
