@@ -7,7 +7,7 @@ import CenteredContainer from './CenteredContainer';
 const Login = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const { login, currentUser } = useAuth();
+    const { login } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();

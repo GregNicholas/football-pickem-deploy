@@ -1,35 +1,38 @@
-/* html {
-    background: green;
+html {
     font-size: 1rem;
-} */
+}
 
 .picked {
-    color: rgb(99, 0, 138);
     font-weight: 900;
     text-transform: uppercase;
 }
 
-.pickedCorrect{
+.pickCorrect{
     color: rgb(15, 180, 0);
     font-weight: 900;
     text-transform: uppercase;
 }
 
-.pickedWrong {
+.pickWrong {
     color: rgb(209, 2, 2);
     font-weight: 900;
     text-transform: uppercase;
 }
 
+.tableHead {
+    background-color: #FFC62F;
+}
+
 .userName {
+    font-size: 1.25rem;
     font-weight: 900;
     text-decoration: underline;
-    background-color: yellow;
 }
 
 .standingsTable {
     margin-bottom: 2rem;
     border: 10px solid;
+    border-color: #4F2683;
 }
 
 .submittedTable {
@@ -39,4 +42,13 @@
 
 .gameLine {
     margin-bottom: 0.5rem;
+}
+
+.vikings {
+    font-weight: 900;
+    color: purple;
+}
+
+.nflChat {
+    font-weight: 900;
 }
