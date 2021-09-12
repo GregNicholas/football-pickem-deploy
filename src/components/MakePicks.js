@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Form, Card, Button, Alert, Table } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { db } from '../firebase';
-//import { doc, setDoc } from "firebase/firestore";
-const deadline = new Date("Thu Sep 09 2021 17:20:00 GMT-0700 (Pacific Daylight Time)");
+const deadline = new Date("Thu Sep 16 2021 17:20:00 GMT-0700 (Pacific Daylight Time)");
 const now = new Date()
 const lockPicks = deadline < now;
 
@@ -13,7 +12,6 @@ const MakePicks = () => {
     lockPicks ? buttonName = "Too Late!" : buttonName = "Submit Picks!";
     const [games, setGames] = useState({});
     const [userPicks, setUserPicks] = useState([]);
-    //const [schedule, setSchedule] = useState([]);
     const [error, setError] = useState("");
     const [picksMade, setPicksMade] = useState();
     const { currentUser } = useAuth();
@@ -24,84 +22,68 @@ const MakePicks = () => {
 
       const thisWeekGames = {
         game1: {
-          away: "Dallas",
-          home: "Tampa Bay", 
-          time: "Thursday, Sep. 9, 7:20pm CT",
+          away: "NY Giants",
+          home: "Washington", 
         },
         game2: {
-          away: "Pittsburgh", 
-          home: "Buffalo", 
-          time: "Sunday, Sep. 12, 12:00pm CT",
+          away: "New England", 
+          home: "NY Jets", 
         },
         game3: {
-          away: "NY Jets", 
-          home: "Carolina", 
-          time: "Sunday, Sep. 12, 12:00pm CT",
-        },
-		game4: {
-          away: "Jacksonville", 
-          home: "Houston", 
-          time: "Sunday, Sep. 12, 12:00pm CT",
-        },
-		game5: {
-          away: "Arizona", 
-          home: "Tennessee", 
-          time: "Sunday, Sep. 12, 12:00pm CT",
-        },
-		game6: {
-          away: "LA Chargers", 
-          home: "Washington", 
-          time: "Sunday, Sep. 12, 12:00pm CT",
-        },
-		game7: {
-          away: "Philadelphia", 
-          home: "Atlanta", 
-          time: "Sunday, Sep. 12, 12:00pm CT",
-        },
-		game8: {
-          away: "Seattle", 
-          home: "Indianapolis", 
-          time: "Sunday, Sep. 12, 12:00pm CT",
-        },
-		game9: {
-          away: "Minnesota", 
-          home: "Cincinnati", 
-          time: "Sunday, Sep. 12, 12:00pm CT",
-        },
-		game10: {
-          away: "San Francisco", 
-          home: "Detroit", 
-          time: "Sunday, Sep. 12, 12:00pm CT",
-        },
-		game11: {
-          away: "Cleveland", 
-          home: "Kansas City", 
-          time: "Sunday, Sep. 12, 3:25pm CT",
-        },
-		game12: {
-          away: "Miami", 
-          home: "New England", 
-          time: "Sunday, Sep. 12, 3:25pm CT",
-        },
-		game13: {
           away: "Denver", 
-          home: "NY Giants", 
-          time: "Sunday, Sep. 12, 3:25pm CT",
+          home: "Jacksonville", 
         },
-		game14: {
-          away: "Green Bay", 
-          home: "New Orleans", 
-          time: "Sunday, Sep. 12, 3:25pm CT",
+          game4: {
+          away: "Buffalo", 
+          home: "Miami", 
         },
-	    game15: {
-          away: "Chicago", 
-          home: "LA Rams", 
-          time: "Sunday, Sep. 12, 7:20pm CT",
+        game5: {
+          away: "San Francisco", 
+          home: "Philadelphia", 
         },
-		game16: {
-          away: "Baltimore", 
-          home: "Las Vegas", 
-          time: "Monday, Sep. 13, 7:15pm CT",
+        game6: {
+          away: "LA Rams", 
+          home: "Indianapolis", 
+        },
+        game7: {
+          away: "Las Vegas", 
+          home: "Pittsburgh", 
+        },
+        game8: {
+          away: "Cincinnati", 
+          home: "Chicago", 
+        },
+        game9: {
+          away: "Houston", 
+          home: "Cleveland", 
+        },
+        game10: {
+          away: "New Orleans", 
+          home: "Carolina", 
+        },
+        game11: {
+          away: "Minnesota", 
+          home: "Arizona", 
+        },
+        game12: {
+          away: "Atlanta", 
+          home: "Tampa Bay", 
+        },
+        game13: {
+          away: "Tennessee", 
+          home: "Seattle", 
+        },
+        game14: {
+          away: "Dallas", 
+          home: "LA Chargers", 
+        },
+        game15: {
+          away: "Kansas City", 
+          home: "Baltimore", 
+        },
+        game16: {
+          away: "Detroit", 
+          home: "Green Bay", 
         },
       }
 
@@ -135,12 +117,12 @@ const MakePicks = () => {
               const userPick = games[g];
               userPick === away ?
                 pickedGames.push(
-                  <tr>
+                  <tr key={away}>
                     <td className="picked">{away}</td>
                     <td>{home}</td>
                   </tr>)
                 : pickedGames.push(
-                  <tr>
+                  <tr key={home}>
                     <td>{away}</td>
                     <td className="picked">{home}</td>
                   </tr>);
@@ -157,7 +139,8 @@ const MakePicks = () => {
     }
 
     const uploadPicks = async () => {
-      db.collection("week1").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
+      db.collection("week2").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
+      //db.collection("vikingsGroup").doc(currentUser.displayName).update({name: currentUser.displayName})
     }
 
   
@@ -165,7 +148,6 @@ const MakePicks = () => {
         const game = thisWeekGames[g];
         const away = game["away"];
         const home = game["home"];
-        const time = game["time"];
         weeklyPicks.push(
           <Form.Group className="gameLine" id={g} key={g}>
                   <Form.Check
@@ -204,7 +186,7 @@ const MakePicks = () => {
         <>
           <Card>
             <Card.Body>
-            <h2 className="text-center mb-4 vikings">Make Picks SKOL VIKES</h2>
+            <h2 className="text-center mb-4 vikings">Week 2 SKOL VIKES</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             {picksMade && <Alert variant="success">Picks Submitted!</Alert> }
             <p><strong>Name: </strong> {currentUser.displayName}</p>

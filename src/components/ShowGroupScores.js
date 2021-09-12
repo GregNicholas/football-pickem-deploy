@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import { db } from '../firebase';
 
@@ -21,7 +21,7 @@ const ShowGroupScores = ({ group, colortheme }) => {
 
         Object.keys(groupScores).map(user => {
           const name = groupScores[user].name;
-          const userScore = Object.values(groupScores[user].weeks).reduce((a, b) => a + b);;
+          const userScore = Object.values(groupScores[user]).filter((item) => typeof item === 'number').reduce((a, b) => (a + b), 0);
             nameScoresArray.push({name: name, userScore: userScore});    
             return null;
         })
@@ -29,18 +29,19 @@ const ShowGroupScores = ({ group, colortheme }) => {
         nameScoresArray.sort((a, b) => b.userScore - a.userScore);
 
         nameScoresArray.forEach(user => {
+          
             standingsTable.push(
                 <tr key={user.name}>
-                <td>{user.name}</td>
-                <td>{user.userScore}</td>
+                <td key={user.name}>{user.name}</td>
+                <td key={user.userScore}>{user.userScore}</td>
                 </tr>) 
         })
         
     results = <Table className="standingsTable" striped bordered hover style={{borderColor: colortheme}}>
-      <thead>
+      <thead key={group}>
         <tr className="tableHead">
-          <th>Name</th>
-          <th>Score</th>
+          <th key="name">Name</th>
+          <th key="score">Score</th>
         </tr>
       </thead>
       <tbody>
