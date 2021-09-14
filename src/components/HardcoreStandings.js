@@ -163,7 +163,7 @@ const Standings = () => {
   }
 
   const showWeekOnePicks = () => {
-    setDisplay(<UserPickTable week={hcweek1} finals={finals[0].week2} thisWeekGames={weekOneGames} colortheme={"black"} />)
+    setDisplay(<UserPickTable week={hcweek1} finals={finals[0].week1} thisWeekGames={weekOneGames} colortheme={"black"} />)
   }
 
   const showWeekTwoPicks = () => {

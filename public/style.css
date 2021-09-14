@@ -23,6 +23,10 @@ html {
     background-color: #FFC62F;
 }
 
+.homeAway {
+    font-weight: 900;
+}
+
 .userName {
     font-size: 1.25rem;
     font-weight: 900;
@@ -33,6 +37,7 @@ html {
     margin-bottom: 2rem;
     border: 10px solid;
     border-color: #4F2683;
+    table-layout: fixed;
 }
 
 .submittedTable {

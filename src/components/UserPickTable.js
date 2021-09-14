@@ -11,7 +11,6 @@ const UserPickTable = ({ week, finals, thisWeekGames, colortheme }) => {
 //     }
 //     fetchData()
 //   }, [])
-
   let results;
   if(week.length > 0){
     results = week.map(user => {
@@ -52,8 +51,8 @@ const UserPickTable = ({ week, finals, thisWeekGames, colortheme }) => {
           <th>MNF: {user.MNFscore}  </th>
         </tr>
         <tr>
-          <th>Away</th>
-          <th>Home</th>
+          <th className="homeAway">Away</th>
+          <th className="homeAway">Home</th>
         </tr>
       </thead>
       <tbody>
