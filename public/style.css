@@ -30,7 +30,6 @@ html {
 .userName {
     font-size: 1.25rem;
     font-weight: 900;
-    text-decoration: underline;
 }
 
 .standingsTable {
@@ -49,11 +48,18 @@ html {
     margin-bottom: 0.5rem;
 }
 
+.formCheck {
+    color: black;
+}
+
 .vikings {
     font-weight: 900;
-    color: purple;
+    color: #4F2683;
+    background-color: #FFC62F;
 }
 
 .nflChat {
     font-weight: 900;
+    color: white;
+    background-color: #013369;
 }

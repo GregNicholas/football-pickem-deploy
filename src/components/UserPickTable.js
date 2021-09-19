@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const UserPickTable = ({ week, finals, thisWeekGames, colortheme }) => {
+const UserPickTable = ({ week, weekText, group, finals, thisWeekGames, colortheme }) => {
 //   const [thisWeek, setThisWeek] = useState([]);
 // console.log("finals: ", finals)
 //   React.useEffect(() => {
@@ -44,9 +44,9 @@ const UserPickTable = ({ week, finals, thisWeekGames, colortheme }) => {
         })
      // }
 
-      return <Table className="standingsTable" striped bordered hover style={{borderColor: colortheme}} key={user.name}>
+      return <Table className="standingsTable" striped bordered hover style={{borderColor: colortheme.primary}} key={user.name}>
       <thead>
-        <tr className="tableHead">
+        <tr style={{backgroundColor: colortheme.secondary, color: colortheme.third}}>
           <th><span className="userName">{user.name}</span> Score: {numCorrect}</th>
           <th>MNF: {user.MNFscore}  </th>
         </tr>

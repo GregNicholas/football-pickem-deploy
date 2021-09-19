@@ -32,8 +32,11 @@ const SetGroupScores = ({ week, finals, group }) => {
         const setUserScore = async () => {
           //db.collection(group).collection("w1").doc(user.name).set({name: user.name, score: numCorrect});
           //db.collection(group).collection(user.name).doc("week2").set({score: numCorrect});
+          const userObj = {};
+          userObj.name = user.name;
+          userObj[week] = numCorrect;
           if (groupScores.filter(e => e.name === user.name).length > 0) {
-            return db.collection(group).doc(user.name).update({name: user.name, week1: numCorrect})
+            return db.collection(group).doc(user.name).update(userObj)
             .then(() => {
               console.log("Updated document")
             })
@@ -41,7 +44,7 @@ const SetGroupScores = ({ week, finals, group }) => {
               console.error("Error updating document", error);
             });
           } else {
-            return db.collection(group).doc(user.name).set({name: user.name, week1: numCorrect})
+            return db.collection(group).doc(user.name).set(userObj)
             .then(() => {
               console.log("created document")
             })
@@ -52,12 +55,10 @@ const SetGroupScores = ({ week, finals, group }) => {
         }
         setUserScore();
         
-        return 
-      <>user score uploaded</>
+        return <>user score uploaded</>
     })
   }
    
-  
  
   return (
     <>

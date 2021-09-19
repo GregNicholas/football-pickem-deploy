@@ -3,7 +3,8 @@ import { Form, Card, Button, Alert, Table } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { db } from '../firebase';
-const deadline = new Date("Thu Sep 16 2021 17:20:00 GMT-0700 (Pacific Daylight Time)");
+import { weekThreeGames } from '../matchupsData';
+const deadline = new Date("Thu Sep 23 2021 17:20:00 GMT-0700 (Pacific Daylight Time)");
 const now = new Date()
 const lockPicks = deadline < now;
 
@@ -20,72 +21,7 @@ const MakePicks = () => {
     const weeklyPicks = [];
     const pickedGames = [];
 
-      const thisWeekGames = {
-        game1: {
-          away: "NY Giants",
-          home: "Washington", 
-        },
-        game2: {
-          away: "New England", 
-          home: "NY Jets", 
-        },
-        game3: {
-          away: "Denver", 
-          home: "Jacksonville", 
-        },
-          game4: {
-          away: "Buffalo", 
-          home: "Miami", 
-        },
-        game5: {
-          away: "San Francisco", 
-          home: "Philadelphia", 
-        },
-        game6: {
-          away: "LA Rams", 
-          home: "Indianapolis", 
-        },
-        game7: {
-          away: "Las Vegas", 
-          home: "Pittsburgh", 
-        },
-        game8: {
-          away: "Cincinnati", 
-          home: "Chicago", 
-        },
-        game9: {
-          away: "Houston", 
-          home: "Cleveland", 
-        },
-        game10: {
-          away: "New Orleans", 
-          home: "Carolina", 
-        },
-        game11: {
-          away: "Minnesota", 
-          home: "Arizona", 
-        },
-        game12: {
-          away: "Atlanta", 
-          home: "Tampa Bay", 
-        },
-        game13: {
-          away: "Tennessee", 
-          home: "Seattle", 
-        },
-        game14: {
-          away: "Dallas", 
-          home: "LA Chargers", 
-        },
-        game15: {
-          away: "Kansas City", 
-          home: "Baltimore", 
-        },
-        game16: {
-          away: "Detroit", 
-          home: "Green Bay", 
-        },
-      }
+    const thisWeekGames = weekThreeGames;
 
     // React.useEffect(() => {
     //   const fetchData = async () => {
@@ -139,7 +75,7 @@ const MakePicks = () => {
     }
 
     const uploadPicks = async () => {
-      db.collection("week2").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
+      db.collection("week3").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
       //db.collection("vikingsGroup").doc(currentUser.displayName).update({name: currentUser.displayName})
     }
 
@@ -150,7 +86,7 @@ const MakePicks = () => {
         const home = game["home"];
         weeklyPicks.push(
           <Form.Group className="gameLine" id={g} key={g}>
-                  <Form.Check
+                  <Form.Check className="formCheck"
                     inline
                     label={away}
                     value={away}
@@ -160,7 +96,7 @@ const MakePicks = () => {
                     id={game.away}
                     required
                   /> <span>at &nbsp;&nbsp;</span>
-                  <Form.Check
+                  <Form.Check className="formCheck"
                     inline
                     label={home}
                     value={home}

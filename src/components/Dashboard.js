@@ -30,16 +30,16 @@ const Dashboard = () => {
             <Link to="/update-profile">
                 Update Profile
             </Link>
-            <Link to="/make-picks" className="btn btn-primary w-100 mt-3">
+            <Link to="/make-picks" className="btn w-100 mt-3" style={{backgroundColor: "#4F2683", color: "#FFC62F", fontWeight: "bold"}}>
                 Vikings Fans Make Picks
             </Link>
-            <Link to="/hardcore-picks" className="btn btn-primary w-100 mt-3">
-                HARDCORE NFL CHAT make picks
-            </Link>
-            <Link to={{pathname: "/standings"}} className="btn btn-success w-100 mt-3">
+            <Link to={{pathname: "/standings"}} className="btn w-100 mt-3" style={{backgroundColor: "#4F2683", color: "#FFC62F", fontWeight: "bold"}}>
                 Vikings Group Results
             </Link>
-            <Link to={{pathname: "/hardcore-standings"}} className="btn btn-success w-100 mt-3">
+            <Link to="/hardcore-picks" className="btn w-100 mt-3" style={{backgroundColor: "#013369", color: "white", fontWeight: "bold"}}>
+                HARDCORE NFL CHAT make picks
+            </Link>
+            <Link to={{pathname: "/hardcore-standings"}} className="btn w-100 mt-3" style={{backgroundColor: "#013369", color: "white", fontWeight: "bold"}}>
                 HARDCORE Group Results
             </Link>
             </Card.Body>
