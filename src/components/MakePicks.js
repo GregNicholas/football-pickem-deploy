@@ -76,7 +76,6 @@ const MakePicks = () => {
 
     const uploadPicks = async () => {
       db.collection("week3").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
-      //db.collection("vikingsGroup").doc(currentUser.displayName).update({name: currentUser.displayName})
     }
 
   
@@ -122,7 +121,7 @@ const MakePicks = () => {
         <>
           <Card>
             <Card.Body>
-            <h2 className="text-center mb-4 vikings">Week 2 SKOL VIKES</h2>
+            <h2 className="text-center mb-4 vikings">Week 3 SKOL VIKES</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             {picksMade && <Alert variant="success">Picks Submitted!</Alert> }
             <p><strong>Name: </strong> {currentUser.displayName}</p>
@@ -135,7 +134,7 @@ const MakePicks = () => {
                 </tr>
               </thead>
             </Table>
-              <Form onSubmit={handleSubmit} className="mb-3">
+              <Form onSubmit={handleSubmit} className="mb-3 weeklyPicks">
                 {weeklyPicks}
                 <Button disabled={loading || lockPicks} className="w-100" type="submit">{buttonName}</Button>
               </Form> 

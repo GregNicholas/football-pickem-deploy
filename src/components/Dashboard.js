@@ -33,9 +33,10 @@ const Dashboard = () => {
             <Link to="/make-picks" className="btn w-100 mt-3" style={{backgroundColor: "#4F2683", color: "#FFC62F", fontWeight: "bold"}}>
                 Vikings Fans Make Picks
             </Link>
-            <Link to={{pathname: "/standings"}} className="btn w-100 mt-3" style={{backgroundColor: "#4F2683", color: "#FFC62F", fontWeight: "bold"}}>
+            <Link to={{pathname: "/standings"}} className="btn w-100 mt-3 vikingsButtons" style={{backgroundColor: "#4F2683", color: "#FFC62F", fontWeight: "bold"}}>
                 Vikings Group Results
             </Link>
+            
             <Link to="/hardcore-picks" className="btn w-100 mt-3" style={{backgroundColor: "#013369", color: "white", fontWeight: "bold"}}>
                 HARDCORE NFL CHAT make picks
             </Link>

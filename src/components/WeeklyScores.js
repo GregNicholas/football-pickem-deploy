@@ -12,20 +12,19 @@ const WeeklyScores = ({ group, groupScores, colortheme }) => {
  
        Object.keys(groupScores).map(user => {
          const name = groupScores[user].name;
-         const userScores = Object.values(groupScores[user]).filter((item) => typeof item !== 'string');
-         console.log("USER: ", user);
-         nameScoresArray.push({name: name, userScores: userScores});   
+         //const userScores = Object.keys(groupScores[user]).filter((item) => item !== "name");
+         nameScoresArray.push({name: name, week1: groupScores[user].week1, week2: groupScores[user].week2, week3: groupScores[user].week3});   
  
            return null;
        })
- 
-       nameScoresArray.sort((a, b) => b.userScore - a.userScore);
  
        nameScoresArray.forEach(user => {
            fullStandingsTable.push(
                <tr key={user.name}>
                <td key={user.name}>{user.name}</td>
-               <td key={user.userScore}>{user.userScore}</td>
+               <td>{user.week1}</td>
+               <td>{user.week2}</td>
+               <td>{user.week3}</td>
                </tr>)
        })
  
@@ -33,8 +32,10 @@ const WeeklyScores = ({ group, groupScores, colortheme }) => {
    weekResults = <Table className="fullStandingsTable" striped bordered hover style={{borderColor: colortheme.primary}}>
      <thead key={group}>
        <tr style={{backgroundColor: colortheme.secondary}}>
-         <th key="name">Name</th>
-         <th key="score">Score</th>
+         <th></th>
+         <th>1</th>
+         <th>2</th>
+         <th>3</th>
        </tr>
      </thead>
      <tbody>

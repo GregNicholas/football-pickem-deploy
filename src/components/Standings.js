@@ -50,7 +50,7 @@ const Standings = () => {
   }
 
   const setGroupScores = () => {
-    setDisplay(<SetGroupScores week="week2" finals={finals[0].week2} group="vikingsScores" />)
+    setDisplay(<SetGroupScores groupWeek="week2" weekText="week2" finals={finals[0].week2} group="vikingsScores" />)
   }
 
   if (finals.length > 0 && week2.length > 0) {

@@ -78,12 +78,13 @@ const ShowGroupScores = ({ group, colortheme }) => {
  //   <tbody>
  //   {weekTwoTable}
  //   </tbody>
- // </Table>
+ // </Table>  
   }
  return (
    <>
    <h2>SEASON TOTALS</h2>
    {cumulativeResults}
+   <h2>WEEKLY Results</h2>
    <WeeklyScores group={group} groupScores={groupScores} colortheme={colortheme} />
    {/* <WeekScores groupScores={groupScores} group={group}/> */}
    </>)

@@ -77,7 +77,6 @@ const NFLPicks = () => {
 
     const uploadPicks = async () => {
       db.collection("hcweek3").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
-      //db.collection("vikingsGroup").doc(currentUser.displayName).update({name: currentUser.displayName})
     }
 
   
@@ -123,7 +122,7 @@ const NFLPicks = () => {
         <>
           <Card>
             <Card.Body>
-            <h2 className="text-center mb-4 nflchat">Make Picks Week 2</h2>
+            <h2 className="text-center mb-4 nflchat">Make Picks Week 3</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             {picksMade && <Alert variant="success">Picks Submitted!</Alert> }
             <p><strong>Name: </strong> {currentUser.displayName}</p>
@@ -136,7 +135,7 @@ const NFLPicks = () => {
                 </tr>
               </thead>
             </Table>
-              <Form onSubmit={handleSubmit} className="mb-3">
+              <Form onSubmit={handleSubmit} className="mb-3 weeklyPicks">
                 {weeklyPicks}
                 <Button disabled={loading || lockPicks} className="w-100" type="submit">{buttonName}</Button>
               </Form> 

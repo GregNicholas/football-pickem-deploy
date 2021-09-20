@@ -2,6 +2,10 @@ html {
     font-size: 1rem;
 }
 
+.vikingsButtons {
+    margin-bottom: 1.25rem;
+}
+
 .picked {
     font-weight: 900;
     text-transform: uppercase;
@@ -46,6 +50,11 @@ html {
 
 .gameLine {
     margin-bottom: 0.5rem;
+    white-space: nowrap;
+}
+
+.weeklyPicks {
+    overflow:scroll;
 }
 
 .formCheck {

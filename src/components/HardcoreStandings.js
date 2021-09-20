@@ -22,7 +22,7 @@ const Standings = () => {
       const w1 = await db.collection("hcweek1").get()
       setHcweek1(w1.docs.map(doc => doc.data()));
 
-      const w2 = await db.collection("hcWeek2").get()
+      const w2 = await db.collection("hcweek2").get()
       setHcweek2(w2.docs.map(doc => doc.data()));
 
       const w3 = await db.collection("hcweek3").get()
@@ -38,7 +38,7 @@ const Standings = () => {
   }, [])
 
   const showWeekPicks = (weektext, week, weekGames) => {
-    setDisplay(<UserPickTable week={week} finals={finals[0][weektext]} thisWeekGames={weekGames} colortheme={{primary: "#4F2683", secondary: "#FFC62F", third: "black"}} />)
+    setDisplay(<UserPickTable week={week} finals={finals[0][weektext]} thisWeekGames={weekGames} colortheme={{primary: "#013369", secondary: "#D50A0A", third: "white"}} />)
   }
 
   // const showWeekTwoPicks = () => {
@@ -50,7 +50,7 @@ const Standings = () => {
   }
 
   const setGroupScores = () => {
-    setDisplay(<SetGroupScores week="week2" finals={finals[0].week2} group="hcScores" />)
+    setDisplay(<SetGroupScores groupWeek="hcweek2" weekText="week2" finals={finals[0].week2} group="hcScores" />)
   }
 
   if (finals.length > 0 && hcweek2.length > 0) {

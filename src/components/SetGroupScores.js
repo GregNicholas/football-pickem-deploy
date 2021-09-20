@@ -1,13 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { db } from '../firebase';
 
-const SetGroupScores = ({ week, finals, group }) => {
+const SetGroupScores = ({ groupWeek, weekText, finals, group }) => {
   const [thisWeek, setThisWeek] = useState([]);
   const [groupScores, setGroupScores] = useState([]);
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const data = await db.collection(week).get()
+      const data = await db.collection(groupWeek).get()
       setThisWeek(data.docs.map(doc => doc.data()));
       const gScores = await db.collection(group).get()
       setGroupScores(gScores.docs.map(doc => doc.data()));
@@ -34,7 +34,7 @@ const SetGroupScores = ({ week, finals, group }) => {
           //db.collection(group).collection(user.name).doc("week2").set({score: numCorrect});
           const userObj = {};
           userObj.name = user.name;
-          userObj[week] = numCorrect;
+          userObj[weekText] = numCorrect;
           if (groupScores.filter(e => e.name === user.name).length > 0) {
             return db.collection(group).doc(user.name).update(userObj)
             .then(() => {
