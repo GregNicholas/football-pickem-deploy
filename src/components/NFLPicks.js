@@ -3,8 +3,8 @@ import { Form, Card, Button, Alert, Table } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { db } from '../firebase';
-import { weekThreeGames } from '../matchupsData';
-const deadline = new Date("Thu Sep 23 2021 17:20:00 GMT-0700 (Pacific Daylight Time)");
+import { weekFourGames } from '../matchupsData';
+const deadline = new Date("Thu Sep 30 2021 17:21:00 GMT-0700 (Pacific Daylight Time)");
 const now = new Date()
 const lockPicks = deadline < now;
 
@@ -13,7 +13,6 @@ const NFLPicks = () => {
     lockPicks ? buttonName = "Too Late!" : buttonName = "Submit Picks!";
     const [games, setGames] = useState({});
     const [userPicks, setUserPicks] = useState([]);
-    //const [schedule, setSchedule] = useState([]);
     const [error, setError] = useState("");
     const [picksMade, setPicksMade] = useState();
     const { currentUser } = useAuth();
@@ -22,15 +21,7 @@ const NFLPicks = () => {
     const weeklyPicks = [];
     const pickedGames = [];
 
-    const thisWeekGames = weekThreeGames;
-
-    // React.useEffect(() => {
-    //   const fetchData = async () => {
-    //     const data = await db.collection("schedule").get()
-    //     setSchedule(data.docs.map(doc => doc.data()));
-    //   }
-    //   fetchData()
-    // }, [])
+    const thisWeekGames = weekFourGames;
 
     const handleChange = (e) => {
       const game = e.target.name;
@@ -76,7 +67,7 @@ const NFLPicks = () => {
     }
 
     const uploadPicks = async () => {
-      db.collection("hcweek3").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
+      db.collection("hcweek4").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
     }
 
   
@@ -122,7 +113,7 @@ const NFLPicks = () => {
         <>
           <Card>
             <Card.Body>
-            <h2 className="text-center mb-4 nflchat">Make Picks Week 3</h2>
+            <h2 className="text-center mb-4 nflchat">Make Picks Week 4</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             {picksMade && <Alert variant="success">Picks Submitted!</Alert> }
             <p><strong>Name: </strong> {currentUser.displayName}</p>

@@ -3,8 +3,8 @@ import { Form, Card, Button, Alert, Table } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { db } from '../firebase';
-import { weekThreeGames } from '../matchupsData';
-const deadline = new Date("Thu Sep 23 2021 17:20:00 GMT-0700 (Pacific Daylight Time)");
+import { weekFourGames } from '../matchupsData';
+const deadline = new Date("Thu Sep 30 2021 17:21:00 GMT-0700 (Pacific Daylight Time)");
 const now = new Date()
 const lockPicks = deadline < now;
 
@@ -21,15 +21,7 @@ const MakePicks = () => {
     const weeklyPicks = [];
     const pickedGames = [];
 
-    const thisWeekGames = weekThreeGames;
-
-    // React.useEffect(() => {
-    //   const fetchData = async () => {
-    //     const data = await db.collection("schedule").get()
-    //     setSchedule(data.docs.map(doc => doc.data()));
-    //   }
-    //   fetchData()
-    // }, [])
+    const thisWeekGames = weekFourGames;
 
     const handleChange = (e) => {
       const game = e.target.name;
@@ -75,7 +67,7 @@ const MakePicks = () => {
     }
 
     const uploadPicks = async () => {
-      db.collection("week3").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
+      db.collection("week4").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
     }
 
   
@@ -121,7 +113,7 @@ const MakePicks = () => {
         <>
           <Card>
             <Card.Body>
-            <h2 className="text-center mb-4 vikings">Week 3 SKOL VIKES</h2>
+            <h2 className="text-center mb-4 vikings">Week 4 SKOL VIKES</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             {picksMade && <Alert variant="success">Picks Submitted!</Alert> }
             <p><strong>Name: </strong> {currentUser.displayName}</p>

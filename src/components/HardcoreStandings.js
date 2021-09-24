@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import {Button } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../firebase';
-import { weekOneGames, weekTwoGames, weekThreeGames } from '../matchupsData';
+import { weekOneGames, weekTwoGames, weekThreeGames, weekFourGames } from '../matchupsData';
 import UserPickTable from './UserPickTable';
 import SetGroupScores from './SetGroupScores';
 import ShowGroupScores from './ShowGroupScores';
-
+import CenteredContainer from './authentication/CenteredContainer';
 
 const Standings = () => {
     const [hcweek1, setHcweek1] = useState([]);
     const [hcweek2, setHcweek2] = useState([]);
     const [hcweek3, setHcweek3] = useState([]);
     const [hcweek4, setHcweek4] = useState([]);
+    const [hcweek5, setHcweek5] = useState([]);
     const [finals, setFinals] = useState([]);
     const [display, setDisplay] = useState('');
     const { currentUser } = useAuth();
@@ -28,8 +29,11 @@ const Standings = () => {
       const w3 = await db.collection("hcweek3").get()
       setHcweek3(w3.docs.map(doc => doc.data()));
 
-      // const w4 = await db.collection("hcweek4").get()
-      // setHcweek4(w4.docs.map(doc => doc.data()));
+      const w4 = await db.collection("hcweek4").get()
+      setHcweek4(w4.docs.map(doc => doc.data()));
+
+      // const w5 = await db.collection("hcweek5").get()
+      // setHcweek5(w5.docs.map(doc => doc.data()));
 
       const fnls = await db.collection("finals").get()
       setFinals(fnls.docs.map(doc => doc.data()));
@@ -41,28 +45,27 @@ const Standings = () => {
     setDisplay(<UserPickTable week={week} finals={finals[0][weektext]} thisWeekGames={weekGames} colortheme={{primary: "#013369", secondary: "#D50A0A", third: "white"}} />)
   }
 
-  // const showWeekTwoPicks = () => {
-  //   setDisplay(<UserPickTable week={hcweek2} finals={finals[0].week2} thisWeekGames={weekTwoGames} colortheme={{primary: "#013369", secondary: "#D50A0A", third: "white"}} />)
-  // }
-
   const showGroupScores = () => {
     setDisplay(<ShowGroupScores group="hcScores" colortheme={{primary: "#013369", secondary: "#D50A0A", third: "white"}} />)
   }
 
   const setGroupScores = () => {
-    setDisplay(<SetGroupScores groupWeek="hcweek2" weekText="week2" finals={finals[0].week2} group="hcScores" />)
+    setDisplay(<SetGroupScores groupWeek="hcweek3" weekText="week3" finals={finals[0].week3} group="hcScores" />)
   }
 
   if (finals.length > 0 && hcweek2.length > 0) {
     return (  
       <>
       <h1 className="nflChat">HARDCORE Group Results</h1>
-          <Button style={{color: "white", backgroundColor: "#013369", fontWeight: "bold"}} onClick={() => showWeekPicks("week1", hcweek1, weekOneGames)}>WEEK 1 PICKS</Button>
-          <br /><br />
-          <Button style={{color: "white", backgroundColor: "#013369", fontWeight: "bold"}} onClick={() => showWeekPicks("week2", hcweek2, weekTwoGames)}>WEEK 2 PICKS</Button>
-          <br /><br />
-          <Button style={{color: "white", backgroundColor: "#013369", fontWeight: "bold"}} onClick={() => showWeekPicks("week3", hcweek3, weekThreeGames)}>WEEK 3 PICKS</Button>
-          <br /><br />
+      <CenteredContainer>
+      <Card>
+        <Card.Body>
+          <section className="weekButtonGroup">
+            <Button className="weekButton" style={{color: "white", backgroundColor: "#013369", fontWeight: "bold"}} onClick={() => showWeekPicks("week1", hcweek1, weekOneGames)}>WEEK 1 PICKS</Button>
+            <Button className="weekButton" style={{color: "white", backgroundColor: "#013369", fontWeight: "bold"}} onClick={() => showWeekPicks("week2", hcweek2, weekTwoGames)}>WEEK 2 PICKS</Button>
+            <Button className="weekButton" style={{color: "white", backgroundColor: "#013369", fontWeight: "bold"}} onClick={() => showWeekPicks("week3", hcweek3, weekThreeGames)}>WEEK 3 PICKS</Button>
+            <Button className="weekButton" style={{color: "white", backgroundColor: "#013369", fontWeight: "bold"}} onClick={() => showWeekPicks("week4", hcweek4, weekFourGames)}>WEEK 4 PICKS</Button>
+          </section>
           <Button style={{color: "white", backgroundColor: "#D50A0A", fontWeight: "bold"}} onClick={showGroupScores}>CUMULATIVE SCORES</Button>
           <br /><br />
           {currentUser.uid === '9tZfRxunq1cMckfGxU8B4pnh0OQ2' ||
@@ -70,6 +73,9 @@ const Standings = () => {
            <Button onClick={setGroupScores} variant="danger">SET Group Scores</Button> : null}
   
           {display}
+          </Card.Body>
+          </Card>
+          </CenteredContainer>
       </>)
   } 
   return null

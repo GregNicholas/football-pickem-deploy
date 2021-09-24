@@ -6,6 +6,15 @@ html {
     margin-bottom: 1.25rem;
 }
 
+.weekButtonGroup {
+    margin-bottom: .75rem;
+}
+
+.weekButton {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
 .picked {
     font-weight: 900;
     text-transform: uppercase;
@@ -65,10 +74,12 @@ html {
     font-weight: 900;
     color: #4F2683;
     background-color: #FFC62F;
+    text-align: center;
 }
 
 .nflChat {
     font-weight: 900;
     color: white;
     background-color: #013369;
+    text-align: center;
 }

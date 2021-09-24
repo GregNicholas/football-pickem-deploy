@@ -2,15 +2,6 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 
 const UserPickTable = ({ week, weekText, group, finals, thisWeekGames, colortheme }) => {
-//   const [thisWeek, setThisWeek] = useState([]);
-// console.log("finals: ", finals)
-//   React.useEffect(() => {
-//     const fetchData = async () => {
-//       const data = await db.collection(week).get()
-//       setThisWeek(data.docs.map(doc => doc.data()));
-//     }
-//     fetchData()
-//   }, [])
   let results;
   if(week.length > 0){
     results = week.map(user => {
