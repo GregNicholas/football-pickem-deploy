@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { db } from '../firebase';
 
 const SetGroupScores = ({ groupWeek, weekText, finals, group }) => {

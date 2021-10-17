@@ -20,8 +20,8 @@ const ShowGroupScores = ({ group, colortheme }) => {
    if(groupScores.length > 0){
      const nameScoresArray = [];
      const fullStandingsTable = [];
-     const weekTwoScores = [];
-     const weekTwoTable = [];
+    //  const weekTwoScores = [];
+    //  const weekTwoTable = [];
  
        Object.keys(groupScores).map(user => {
          const name = groupScores[user].name;

@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../firebase';
-import { weekOneGames, weekTwoGames, weekThreeGames, weekFourGames } from '../matchupsData';
+import { weekOneGames, weekTwoGames, weekThreeGames, weekFourGames, weekFiveGames, 
+        weekSixGames, weekSevenGames, weekEightGames, weekNineGames, weekTenGames, 
+        weekElevenGames, weekTwelveGames, weekThirteenGames, weekFourteeenGames, weekFifteenGames,
+        weekSixteenGames, weekSeventeenGames } from '../matchupsData';
 import UserPickTable from './UserPickTable';
 import SetGroupScores from './SetGroupScores';
 import ShowGroupScores from './ShowGroupScores';
@@ -14,6 +17,18 @@ const Standings = () => {
     const [week3, setWeek3] = useState([]);
     const [week4, setWeek4] = useState([]);
     const [week5, setWeek5] = useState([]);
+    const [week6, setWeek6] = useState([]);
+    const [week7, setWeek7] = useState([]);
+    const [week8, setWeek8] = useState([]);
+    const [week9, setWeek9] = useState([]);
+    const [week10, setWeek10] = useState([]);
+    const [week11, setWeek11] = useState([]);
+    const [week12, setWeek12] = useState([]);
+    const [week13, setWeek13] = useState([]);
+    const [week14, setWeek14] = useState([]);
+    const [week15, setWeek15] = useState([]);
+    const [week16, setWeek16] = useState([]);
+    const [week17, setWeek17] = useState([]);
     const [finals, setFinals] = useState([]);
     const [display, setDisplay] = useState('');
     const { currentUser } = useAuth();
@@ -32,8 +47,14 @@ const Standings = () => {
       const w4 = await db.collection("week4").get()
       setWeek4(w4.docs.map(doc => doc.data()));
 
-      // const w5 = await db.collection("week5").get()
-      // setWeek5(w5.docs.map(doc => doc.data()));
+      const w5 = await db.collection("week5").get()
+      setWeek5(w5.docs.map(doc => doc.data()));
+
+      const w6 = await db.collection("week6").get()
+      setWeek6(w6.docs.map(doc => doc.data()));
+
+      const w7 = await db.collection("week7").get()
+      setWeek7(w7.docs.map(doc => doc.data()));
 
       const fnls = await db.collection("finals").get()
       setFinals(fnls.docs.map(doc => doc.data()));
@@ -45,19 +66,16 @@ const Standings = () => {
   const showWeekPicks = (weekText, week, weekGames) => {
     setDisplay(<UserPickTable week={week} weekText={weekText} group="vikingsScores" finals={finals[0][weekText]} thisWeekGames={weekGames} colortheme={{primary: "#4F2683", secondary: "#FFC62F", third: "black"}} />)
   }
-  // const showWeekTwoPicks = () => {
-  //   setDisplay(<UserPickTable week={week2} finals={finals[0].week2} thisWeekGames={weekTwoGames} colortheme={{primary: "#4F2683", secondary: "#FFC62F", third: "black"}} />)
-  // }
 
   const showGroupScores = () => {
     setDisplay(<ShowGroupScores group="vikingsScores" colortheme={{primary: "#4F2683", secondary: "#FFC62F", third: "black"}} />)
   }
 
   const setGroupScores = () => {
-    setDisplay(<SetGroupScores groupWeek="week3" weekText="week3" finals={finals[0].week3} group="vikingsScores" />)
+    setDisplay(<SetGroupScores groupWeek="week6" weekText="week6" finals={finals[0].week6} group="vikingsScores" />)
   }
 
-  if (finals.length > 0 && week2.length > 0) {
+  if (finals.length > 0 && week5.length > 0) {
     return (
       <>
       <h1 className="vikings">VIKINGS Group Results</h1>
@@ -69,6 +87,9 @@ const Standings = () => {
           <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week2", week2, weekTwoGames)}>Week 2 Picks</Button>
           <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week3", week3, weekThreeGames)}>Week 3 Picks</Button>
           <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week4", week4, weekFourGames)}>Week 4 Picks</Button>
+          <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week5", week5, weekFiveGames)}>Week 5 Picks</Button>
+          <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week6", week6, weekSixGames)}>Week 6 Picks</Button>
+          <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week7", week7, weekSevenGames)}>Week 7 Picks</Button>
           </section>
           <Button style={{color: "#4F2683", backgroundColor: "#FFC62F", border: "#4F2683", fontWeight: "bold"}} onClick={showGroupScores}>Cumulative Scores</Button>
           <br /><br />
