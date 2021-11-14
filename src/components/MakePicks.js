@@ -1,16 +1,18 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { Form, Card, Button, Alert, Table } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { db } from '../firebase';
-import { weekSevenGames as thisWeekGames } from '../matchupsData';
-const deadline = new Date("Thu Oct 21 2021 17:22:00 GMT-0700 (Pacific Daylight Time)");
+//import ScheduleContext from '../contexts/ScheduleContext';
+import { weekElevenGames as thisWeekGames } from '../matchupsData';
+const deadline = new Date("Thu Nov 18 2021 17:22:00 GMT-0700 (Pacific Daylight Time)");
 const now = new Date()
 const lockPicks = deadline < now;
 
 const MakePicks = () => {
     let buttonName;
     lockPicks ? buttonName = "Too Late!" : buttonName = "Submit Picks!";
+    // const { weekData } = useContext(ScheduleContext);
     const [games, setGames] = useState({});
     const [userPicks, setUserPicks] = useState([]);
     const [error, setError] = useState("");
@@ -20,8 +22,6 @@ const MakePicks = () => {
     const MNFref = useRef();
     const weeklyPicks = [];
     const pickedGames = [];
-
-    //const thisWeekGames = weekFourGames;
 
     const handleChange = (e) => {
       const game = e.target.name;
@@ -67,7 +67,7 @@ const MakePicks = () => {
     }
 
     const uploadPicks = async () => {
-      db.collection("week7").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
+      db.collection("week11").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
     }
 
   
@@ -113,7 +113,7 @@ const MakePicks = () => {
         <>
           <Card>
             <Card.Body>
-            <h2 className="text-center mb-4 vikings">Week 7 SKOL VIKES</h2>
+            <h2 className="text-center mb-4 vikings">Week 11 SKOL VIKES</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             {picksMade && <Alert variant="success">Picks Submitted!</Alert> }
             <p><strong>Name: </strong> {currentUser.displayName}</p>

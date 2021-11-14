@@ -16,7 +16,6 @@ const SetGroupScores = ({ groupWeek, weekText, finals, group }) => {
   }, [])
 
   if(thisWeek.length > 0 && groupScores.length > 0) {
-    console.log(finals)
     thisWeek.map(user => {
       let numCorrect = 0;
         Object.keys(finals).map(game => {

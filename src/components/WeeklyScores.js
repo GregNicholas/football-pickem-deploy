@@ -7,9 +7,7 @@ const WeeklyScores = ({ group, groupScores, colortheme }) => {
    if(groupScores.length > 0){
      const nameScoresArray = [];
      const fullStandingsTable = [];
-     const fullStandingsTable2 = [];
-   //   const weekTwoScores = [];
-   //   const weekTwoTable = [];
+     //const fullStandingsTable2 = [];
  
        Object.keys(groupScores).map(user => {
          const name = groupScores[user].name;
@@ -20,7 +18,19 @@ const WeeklyScores = ({ group, groupScores, colortheme }) => {
           week3: groupScores[user].week3,
           week4: groupScores[user].week4,
           week5: groupScores[user].week5,
-          week6: groupScores[user].week6});   
+          week6: groupScores[user].week6,
+          week7: groupScores[user].week7,
+          week8: groupScores[user].week8,
+          week9: groupScores[user].week9,
+          week10: groupScores[user].week10,
+          week11: groupScores[user].week11,
+          week12: groupScores[user].week12,
+          week13: groupScores[user].week13,
+          week14: groupScores[user].week14,
+          week15: groupScores[user].week15,
+          week16: groupScores[user].week16,
+          week17: groupScores[user].week17
+        });   
  
            return null;
        })
@@ -78,19 +88,6 @@ const WeeklyScores = ({ group, groupScores, colortheme }) => {
      </tbody>
    </Table>
    </div>
-
-weekResults2 = <Table className="fullStandingsTable" striped bordered hover style={{borderColor: colortheme.primary}}>
-<thead key={group}>
-  <tr style={{backgroundColor: colortheme.secondary}}>
-    <th></th>
-    
-    
-  </tr>
-</thead>
-<tbody>
-{fullStandingsTable2}
-</tbody>
-</Table>
  
   }
  return (

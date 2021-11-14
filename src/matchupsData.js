@@ -569,11 +569,378 @@ export const weekNineGames = {
   },
 }
 
-export const weekTenGames = {}
-export const weekElevenGames = {}
-export const weekTwelveGames = {}
-export const weekThirteenGames = {}
-export const weekFourteenGames = {}
-export const weekFifteenGames = {}
+export const weekTenGames = {
+  game1: {
+    away: "Baltimore",
+    home: "Miami", 
+  },
+  game2: {
+    away: "Atlanta", 
+    home: "Dallas", 
+  },
+  game3: {
+    away: "New Orleans", 
+    home: "Tennessee", 
+  },
+    game4: {
+    away: "Jacksonville", 
+    home: "Indianapolis", 
+  },
+  game5: {
+    away: "Cleveland", 
+    home: "New England", 
+  },
+  game6: {
+    away: "Buffalo", 
+    home: "NY Jets", 
+  },
+  game7: {
+    away: "Detroit", 
+    home: "Pittsburgh", 
+  },
+  game8: {
+    away: "Tampa Bay", 
+    home: "Washington", 
+  },
+  game9: {
+    away: "Carolina", 
+    home: "Arizona", 
+  },
+  game10: {
+    away: "Minnesota", 
+    home: "LA Chargers", 
+  },
+  game11: {
+    away: "Philadelphia", 
+    home: "Denver", 
+  },
+  game12: {
+    away: "Seattle", 
+    home: "Green Bay", 
+  },
+  game13: {
+    away: "Kansas City", 
+    home: "Las Vegas", 
+  },
+  game14: {
+    away: "LA Rams", 
+    home: "San Francisco", 
+  },
+}
+
+export const weekElevenGames = {
+  game1: {
+    away: "New England",
+    home: "Atlanta", 
+  },
+  game2: {
+    away: "Indianapolis", 
+    home: "Buffalo", 
+  },
+  game3: {
+    away: "Baltimore", 
+    home: "Chicago", 
+  },
+    game4: {
+    away: "Detroit", 
+    home: "Cleveland", 
+  },
+  game5: {
+    away: "Houston", 
+    home: "Tennessee", 
+  },
+  game6: {
+    away: "Green Bay", 
+    home: "Minnesota", 
+  },
+  game7: {
+    away: "Miami", 
+    home: "NY Jets", 
+  },
+  game8: {
+    away: "New Orleans", 
+    home: "Philadelphia", 
+  },
+  game9: {
+    away: "Washingon", 
+    home: "Carolina", 
+  },
+  game10: {
+    away: "San Francisco", 
+    home: "Jacksonville", 
+  },
+  game11: {
+    away: "Cincinnati", 
+    home: "Las Vegas", 
+  },
+  game12: {
+    away: "Dallas", 
+    home: "Kansas City", 
+  },
+  game13: {
+    away: "Arizona", 
+    home: "Seattle", 
+  },
+  game14: {
+    away: "Pittsburgh", 
+    home: "LA Chargers", 
+  },
+  game15: {
+    away: "NY Giants", 
+    home: "Tampa Bay", 
+  },
+}
+
+export const weekTwelveGames = {
+  game1: {
+    away: "Chicago",
+    home: "Detroit", 
+  },
+  game2: {
+    away: "Las Vegas", 
+    home: "Dallas", 
+  },
+  game3: {
+    away: "Buffalo", 
+    home: "New Orleans", 
+  },
+    game4: {
+    away: "Pittsburgh", 
+    home: "Cincinnati", 
+  },
+  game5: {
+    away: "Tampa Bay", 
+    home: "Indianapoli", 
+  },
+  game6: {
+    away: "Carolina", 
+    home: "Miami", 
+  },
+  game7: {
+    away: "Tennessee", 
+    home: "New England", 
+  },
+  game8: {
+    away: "Philadelphia", 
+    home: "NY Giants", 
+  },
+  game9: {
+    away: "Atlanta", 
+    home: "Jacksonville", 
+  },
+  game10: {
+    away: "NY Jets", 
+    home: "Houston", 
+  },
+  game11: {
+    away: "LA Chargers", 
+    home: "Denver", 
+  },
+  game12: {
+    away: "LA Rams", 
+    home: "Green Bay", 
+  },
+  game13: {
+    away: "Minnesota", 
+    home: "San Francisco", 
+  },
+  game14: {
+    away: "Cleveland", 
+    home: "Baltimore", 
+  },
+  game15: {
+    away: "Seattle", 
+    home: "Washington", 
+  },
+}
+
+export const weekThirteenGames = {
+  game1: {
+    away: "Dallas",
+    home: "New Orleans", 
+  },
+  game2: {
+    away: "Tampa Bay", 
+    home: "Atlanta", 
+  },
+  game3: {
+    away: "Arizona", 
+    home: "Chicago", 
+  },
+    game4: {
+    away: "LA Chargers", 
+    home: "Cincinnati", 
+  },
+  game5: {
+    away: "Minnesota", 
+    home: "Detroit", 
+  },
+  game6: {
+    away: "Denver", 
+    home: "Kansas City", 
+  },
+  game7: {
+    away: "NY Giants", 
+    home: "Miami", 
+  },
+  game8: {
+    away: "Philadelphia", 
+    home: "NY Jets", 
+  },
+  game9: {
+    away: "Indianapolis", 
+    home: "Houston", 
+  },
+  game10: {
+    away: "Washington", 
+    home: "Las Vegas", 
+  },
+  game11: {
+    away: "Jacksonville", 
+    home: "LA Rams", 
+  },
+  game12: {
+    away: "Baltimore", 
+    home: "Pittsburgh", 
+  },
+  game13: {
+    away: "San Francisco", 
+    home: "Seattle", 
+  },
+  game14: {
+    away: "New England", 
+    home: "Buffalo", 
+  },
+}
+
+export const weekFourteenGames = {
+  game1: {
+    away: "Pittsburgh",
+    home: "Minnesota", 
+  },
+  game2: {
+    away: "San Francisco", 
+    home: "Cincinnati", 
+  },
+  game3: {
+    away: "Baltimore", 
+    home: "Cleveland", 
+  },
+    game4: {
+    away: "Jacksonville", 
+    home: "Tennessee", 
+  },
+  game5: {
+    away: "Las Vegas", 
+    home: "Kansas City", 
+  },
+  game6: {
+    away: "New Orleans", 
+    home: "NY Jets", 
+  },
+  game7: {
+    away: "Dallas", 
+    home: "Washington", 
+  },
+  game8: {
+    away: "Atlanta", 
+    home: "Carolina", 
+  },
+  game9: {
+    away: "Seattle", 
+    home: "Houston", 
+  },
+  game10: {
+    away: "Detroit", 
+    home: "Denver", 
+  },
+  game11: {
+    away: "NY Giants", 
+    home: "LA Chargers", 
+  },
+  game12: {
+    away: "Buffalo", 
+    home: "Tampa Bay", 
+  },
+  game13: {
+    away: "Chicago", 
+    home: "Green Bay", 
+  },
+  game14: {
+    away: "LA Rams", 
+    home: "Arizona", 
+  },
+}
+
+export const weekFifteenGames = {
+  game1: {
+    away: "Kansas City",
+    home: "LA Chargers", 
+  },
+  game2: {
+    away: "Carolina", 
+    home: "Buffalo", 
+  },
+  game3: {
+    away: "Las Vegas", 
+    home: "Cleveland", 
+  },
+    game4: {
+    away: "New England", 
+    home: "Indianapolis", 
+  },
+  game5: {
+    away: "NY Jets", 
+    home: "Miami", 
+  },
+  game6: {
+    away: "Washington", 
+    home: "Philadelphia", 
+  },
+  game7: {
+    away: "Arizona", 
+    home: "Detroit", 
+  },
+  game8: {
+    away: "Dallas", 
+    home: "NY Giants", 
+  },
+  game9: {
+    away: "Tennessee", 
+    home: "Pittsburgh", 
+  },
+  game10: {
+    away: "Houston", 
+    home: "Jacksonville", 
+  },
+  game11: {
+    away: "Green Bay", 
+    home: "Baltimore", 
+  },
+  game12: {
+    away: "Cincinnati", 
+    home: "Denver", 
+  },
+  game13: {
+    away: "Atlanta", 
+    home: "San Francisco", 
+  },
+  game14: {
+    away: "Seattle", 
+    home: "LA Rams", 
+  },
+  game15: {
+    away: "New Orleans", 
+    home: "Tampa Bay", 
+  },
+  game16: {
+    away: "Minnesota",
+    home: "Chicago",
+  }
+}
+
 export const weekSixteenGames = {}
+
 export const weekSeventeenGames = {}
+
+export const weekEighteenGames = {}

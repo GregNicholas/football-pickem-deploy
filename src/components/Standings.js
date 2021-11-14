@@ -5,7 +5,7 @@ import { db } from '../firebase';
 import { weekOneGames, weekTwoGames, weekThreeGames, weekFourGames, weekFiveGames, 
         weekSixGames, weekSevenGames, weekEightGames, weekNineGames, weekTenGames, 
         weekElevenGames, weekTwelveGames, weekThirteenGames, weekFourteeenGames, weekFifteenGames,
-        weekSixteenGames, weekSeventeenGames } from '../matchupsData';
+        weekSixteenGames, weekSeventeenGames, weekEighteenGames } from '../matchupsData';
 import UserPickTable from './UserPickTable';
 import SetGroupScores from './SetGroupScores';
 import ShowGroupScores from './ShowGroupScores';
@@ -29,6 +29,7 @@ const Standings = () => {
     const [week15, setWeek15] = useState([]);
     const [week16, setWeek16] = useState([]);
     const [week17, setWeek17] = useState([]);
+    const [week18, setWeek18] = useState([]);
     const [finals, setFinals] = useState([]);
     const [display, setDisplay] = useState('');
     const { currentUser } = useAuth();
@@ -56,6 +57,18 @@ const Standings = () => {
       const w7 = await db.collection("week7").get()
       setWeek7(w7.docs.map(doc => doc.data()));
 
+      const w8 = await db.collection("week8").get()
+      setWeek8(w8.docs.map(doc => doc.data()));
+
+      const w9 = await db.collection("week9").get()
+      setWeek9(w9.docs.map(doc => doc.data()));
+
+      const w10 = await db.collection("week10").get()
+      setWeek10(w10.docs.map(doc => doc.data()));
+
+      const w11 = await db.collection("week11").get()
+      setWeek11(w11.docs.map(doc => doc.data()));
+
       const fnls = await db.collection("finals").get()
       setFinals(fnls.docs.map(doc => doc.data()));
     }
@@ -72,7 +85,7 @@ const Standings = () => {
   }
 
   const setGroupScores = () => {
-    setDisplay(<SetGroupScores groupWeek="week6" weekText="week6" finals={finals[0].week6} group="vikingsScores" />)
+    setDisplay(<SetGroupScores groupWeek="week10" weekText="week10" finals={finals[0].week10} group="vikingsScores" />)
   }
 
   if (finals.length > 0 && week5.length > 0) {
@@ -90,6 +103,10 @@ const Standings = () => {
           <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week5", week5, weekFiveGames)}>Week 5 Picks</Button>
           <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week6", week6, weekSixGames)}>Week 6 Picks</Button>
           <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week7", week7, weekSevenGames)}>Week 7 Picks</Button>
+          <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week8", week8, weekEightGames)}>Week 8 Picks</Button>
+          <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week9", week9, weekNineGames)}>Week 9 Picks</Button>
+          <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week10", week10, weekTenGames)}>Week 10 Picks</Button>
+          <Button className="weekButton" style={{color: "#FFC62F", backgroundColor: "#4F2683", border: "#4F2683", fontWeight: "bold"}} onClick={() => showWeekPicks("week11", week11, weekElevenGames)}>Week 11 Picks</Button>
           </section>
           <Button style={{color: "#4F2683", backgroundColor: "#FFC62F", border: "#4F2683", fontWeight: "bold"}} onClick={showGroupScores}>Cumulative Scores</Button>
           <br /><br />

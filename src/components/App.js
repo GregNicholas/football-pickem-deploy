@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Signup from "./authentication/Signup";
 import Dashboard from "./Dashboard";
 import Login from "./authentication/Login";
@@ -11,8 +11,21 @@ import MakePicks from "./MakePicks";
 import NFLPicks from "./NFLPicks";
 import Standings from "./Standings";
 import HardcoreStandings from "./HardcoreStandings";
+import ScheduleContext from "../contexts/ScheduleContext";
 
 function App() {
+  // const [weekData, setWeekData] = useState([]);
+
+  // React.useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await db.collection(schedule).get()
+  //     setWeekData(data.docs.map(doc => doc.data()));
+  //   }
+  //   fetchData()
+  // }, [])
+
+  // console.log(weekData)
+
   return (
       <Router>
         <AuthProvider>
@@ -32,5 +45,7 @@ function App() {
   )
     
 }
+// {/* <ScheduleContext.Provider value={{ weekData }}>
+// </ScheduleContext.Provider> */}
 
 export default App;
