@@ -11,7 +11,7 @@ import MakePicks from "./MakePicks";
 import NFLPicks from "./NFLPicks";
 import Standings from "./Standings";
 import HardcoreStandings from "./HardcoreStandings";
-import ScheduleContext from "../contexts/ScheduleContext";
+import {ScheduleContextProvider} from "../contexts/ScheduleContext";
 
 function App() {
   // const [weekData, setWeekData] = useState([]);
@@ -29,6 +29,7 @@ function App() {
   return (
       <Router>
         <AuthProvider>
+          <ScheduleContextProvider>
           <Switch>
             <PrivateRoute exact path="/" component={Dashboard} />
             <PrivateRoute path="/make-picks" component={MakePicks} />
@@ -40,6 +41,7 @@ function App() {
             <Route path="/standings" component={Standings} />
             <Route path="/hardcore-standings" component={HardcoreStandings} />
           </Switch>
+          </ScheduleContextProvider>
         </AuthProvider>
       </Router>
   )

@@ -1,14 +1,39 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { Form, Card, Button, Alert, Table } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
+import { ScheduleContext } from "../contexts/ScheduleContext";
 import { Link } from 'react-router-dom';
 import { db } from '../firebase';
-import { weekElevenGames as thisWeekGames } from '../matchupsData';
-const deadline = new Date("Thu Nov 18 2021 17:22:00 GMT-0700 (Pacific Daylight Time)");
-const now = new Date()
-const lockPicks = deadline < now;
+import { weekSixteenGames, weekSeventeenGames, weekEighteenGames } from '../matchupsData';
 
+    
 const NFLPicks = () => {
+    let deadline = ''
+    let weekGames = {}
+    let weekNumber = 'Refresh the page'
+  const {schedule} = useContext(ScheduleContext);
+  if(schedule.length > 0){
+    deadline = schedule[0].deadline
+    weekGames = schedule[0].schedule
+    weekNumber = schedule[0].week.number
+  }
+  
+  console.log(`hcweek${weekNumber}`);
+  const now = new Date()
+  const deadlineDate = new Date(deadline)
+  const lockPicks = deadlineDate < now;
+  let thisWeekGames = {}
+  switch(weekGames){
+    case "weekSixteenGames":
+      thisWeekGames = weekSixteenGames
+      break;
+    case "weekSeventeenGames":
+      thisWeekGames = weekSeventeenGames
+      break;
+    case "weekEighteenGames":
+      thisWeekGames = weekEighteenGames
+      break;
+  } 
     let buttonName;
     lockPicks ? buttonName = "Too Late!" : buttonName = "Submit Picks!";
     const [games, setGames] = useState({});
@@ -65,7 +90,7 @@ const NFLPicks = () => {
     }
 
     const uploadPicks = async () => {
-      db.collection("hcweek11").doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
+      db.collection(`hcweek${weekNumber}`).doc(currentUser.uid).set({name: currentUser.displayName, picks: games, MNFscore: MNFref.current.value});
     }
 
   
@@ -110,15 +135,16 @@ const NFLPicks = () => {
     return (
         <>
           <Card>
+            <h2 className="text-center mb-4 nflChat">Make Picks Week {weekNumber}</h2>
             <Card.Body>
-            <h2 className="text-center mb-4 nflchat">Make Picks Week 11</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             {picksMade && <Alert variant="success">Picks Submitted!</Alert> }
+            <div className="picks-container">
             <p><strong>Name: </strong> {currentUser.displayName}</p>
           {!picksMade && <>
-            <Table striped bordered hover>
+            <Table striped bordered hover style={{width: "17.25rem", borderBottom: "none"}}>
             <thead>
-                <tr>
+                <tr className="away-home">
                   <th>AWAY</th>
                   <th>HOME</th>
                 </tr>
@@ -130,6 +156,7 @@ const NFLPicks = () => {
               </Form> 
             </>
           } 
+          </div>
             </Card.Body>
           </Card>
           <Link to={{pathname: "/hardcore-standings"}} className="btn btn-success w-100 mt-3">

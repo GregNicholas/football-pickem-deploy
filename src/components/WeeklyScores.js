@@ -29,7 +29,8 @@ const WeeklyScores = ({ group, groupScores, colortheme }) => {
           week14: groupScores[user].week14,
           week15: groupScores[user].week15,
           week16: groupScores[user].week16,
-          week17: groupScores[user].week17
+          week17: groupScores[user].week17,
+          week18: groupScores[user].week18
         });   
  
            return null;
@@ -56,6 +57,7 @@ const WeeklyScores = ({ group, groupScores, colortheme }) => {
                <td>{user.week15}</td>
                <td>{user.week16}</td>
                <td>{user.week17}</td>
+               <td>{user.week18}</td>
                </tr>)
        })
  
@@ -81,6 +83,7 @@ const WeeklyScores = ({ group, groupScores, colortheme }) => {
          <th>15</th>
          <th>16</th>
          <th>17</th> 
+         <th>18</th> 
        </tr>
      </thead>
      <tbody>

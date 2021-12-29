@@ -7,7 +7,6 @@ const UserPickTable = ({ week, weekText, group, finals, thisWeekGames, colorthem
     results = week.map(user => {
       const userPicks = [];
       let numCorrect = 0;
-     // if (finals.length > 0) {
         Object.keys(thisWeekGames).map(game => {
           const away = thisWeekGames[game]["away"];
           const home = thisWeekGames[game]["home"];
@@ -33,7 +32,6 @@ const UserPickTable = ({ week, weekText, group, finals, thisWeekGames, colorthem
               </tr>);     
         return null;
         })
-     // }
 
       return <Table className="standingsTable" striped bordered hover style={{borderColor: colortheme.primary}} key={user.name}>
       <thead>
